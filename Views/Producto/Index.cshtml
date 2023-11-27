@@ -1,0 +1,39 @@
+@model IEnumerable<MaestroDetalle_CRUD.Models.Producto>
+
+@{
+    ViewData["Title"] = "Índice";
+}
+
+<div class="container mt-4">
+    <h1>Índice de Productos</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear Nuevo</a>
+    </p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.ProductoId">Editar</a>
+                            <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.ProductoId">Detalles</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.ProductoId">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
